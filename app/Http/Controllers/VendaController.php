@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Venda;
@@ -6,20 +7,24 @@ use App\Models\Cliente;
 use App\Models\Apartamento;
 use Illuminate\Http\Request;
 
-class VendaController extends Controller {
+class VendaController extends Controller
+{
 
-    public function index() {
+    public function index()
+    {
         $vendas = Venda::with(['cliente', 'apartamento'])->get();
         return view('vendas.index', compact('vendas'));
     }
 
-    public function create() {
+    public function create()
+    {
         $clientes     = Cliente::all();
         $apartamentos = Apartamento::where('estado', 'Disponível')->get();
         return view('vendas.create', compact('clientes', 'apartamentos'));
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $request->validate([
             'cliente_id'     => 'required|exists:clientes,id',
             'apartamento_id' => 'required|exists:apartamentos,id',
@@ -40,19 +45,22 @@ class VendaController extends Controller {
         return redirect()->route('vendas.index')->with('success', 'Venda registada com sucesso!');
     }
 
-    public function show(Venda $venda) {
+    public function show(Venda $venda)
+    {
         return view('vendas.show', compact('venda'));
     }
 
-    public function edit(Venda $venda) {
+    public function edit(Venda $venda)
+    {
         $clientes     = Cliente::all();
         $apartamentos = Apartamento::where('estado', 'Disponível')
-                          ->orWhere('id', $venda->apartamento_id)
-                          ->get();
+            ->orWhere('id', $venda->apartamento_id)
+            ->get();
         return view('vendas.edit', compact('venda', 'clientes', 'apartamentos'));
     }
 
-    public function update(Request $request, Venda $venda) {
+    public function update(Request $request, Venda $venda)
+    {
         $request->validate([
             'cliente_id'     => 'required|exists:clientes,id',
             'apartamento_id' => 'required|exists:apartamentos,id',
@@ -65,7 +73,8 @@ class VendaController extends Controller {
         return redirect()->route('vendas.index')->with('success', 'Venda atualizada com sucesso!');
     }
 
-    public function destroy(Venda $venda) {
+    public function destroy(Venda $venda)
+    {
         // Repõe o apartamento como disponível
         $venda->apartamento->update(['estado' => 'Disponível']);
         $venda->delete();

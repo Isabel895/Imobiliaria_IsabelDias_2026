@@ -1,22 +1,25 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Apartamento;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class ApartamentoController extends Controller {
+class ApartamentoController extends Controller
+{
 
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
         $query = Apartamento::query();
 
         // Pesquisa
         if ($request->filled('search')) {
             $s = $request->search;
-            $query->where(function($q) use ($s) {
+            $query->where(function ($q) use ($s) {
                 $q->where('referencia', 'like', "%$s%")
-                  ->orWhere('tipologia', 'like', "%$s%")
-                  ->orWhere('morada', 'like', "%$s%");
+                    ->orWhere('tipologia', 'like', "%$s%")
+                    ->orWhere('morada', 'like', "%$s%");
             });
         }
 
@@ -31,11 +34,13 @@ class ApartamentoController extends Controller {
         return view('apartamentos.index', compact('apartamentos'));
     }
 
-    public function create() {
+    public function create()
+    {
         return view('apartamentos.create');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $request->validate([
             'referencia' => 'required|string|unique:apartamentos',
             'tipologia'  => 'required|string',
@@ -56,15 +61,18 @@ class ApartamentoController extends Controller {
         return redirect()->route('apartamentos.index')->with('success', 'Apartamento criado com sucesso!');
     }
 
-    public function show(Apartamento $apartamento) {
+    public function show(Apartamento $apartamento)
+    {
         return view('apartamentos.show', compact('apartamento'));
     }
 
-    public function edit(Apartamento $apartamento) {
+    public function edit(Apartamento $apartamento)
+    {
         return view('apartamentos.edit', compact('apartamento'));
     }
 
-    public function update(Request $request, Apartamento $apartamento) {
+    public function update(Request $request, Apartamento $apartamento)
+    {
         $request->validate([
             'referencia' => 'required|string|unique:apartamentos,referencia,' . $apartamento->id,
             'tipologia'  => 'required|string',
@@ -87,7 +95,8 @@ class ApartamentoController extends Controller {
         return redirect()->route('apartamentos.index')->with('success', 'Apartamento atualizado com sucesso!');
     }
 
-    public function destroy(Apartamento $apartamento) {
+    public function destroy(Apartamento $apartamento)
+    {
         if ($apartamento->fotografia) {
             Storage::disk('public')->delete($apartamento->fotografia);
         }

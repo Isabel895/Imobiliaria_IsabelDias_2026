@@ -1,21 +1,26 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 
-class ClienteController extends Controller {
+class ClienteController extends Controller
+{
 
-    public function index() {
+    public function index()
+    {
         $clientes = Cliente::all();
         return view('clientes.index', compact('clientes'));
     }
 
-    public function create() {
+    public function create()
+    {
         return view('clientes.create');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $request->validate([
             'nome'     => 'required|string|max:255',
             'email'    => 'required|email|unique:clientes',
@@ -27,15 +32,18 @@ class ClienteController extends Controller {
         return redirect()->route('clientes.index')->with('success', 'Cliente criado com sucesso!');
     }
 
-    public function show(Cliente $cliente) {
+    public function show(Cliente $cliente)
+    {
         return view('clientes.show', compact('cliente'));
     }
 
-    public function edit(Cliente $cliente) {
+    public function edit(Cliente $cliente)
+    {
         return view('clientes.edit', compact('cliente'));
     }
 
-    public function update(Request $request, Cliente $cliente) {
+    public function update(Request $request, Cliente $cliente)
+    {
         $request->validate([
             'nome'     => 'required|string|max:255',
             'email'    => 'required|email|unique:clientes,email,' . $cliente->id,
@@ -47,7 +55,8 @@ class ClienteController extends Controller {
         return redirect()->route('clientes.index')->with('success', 'Cliente atualizado com sucesso!');
     }
 
-    public function destroy(Cliente $cliente) {
+    public function destroy(Cliente $cliente)
+    {
         $cliente->delete();
         return redirect()->route('clientes.index')->with('success', 'Cliente apagado com sucesso!');
     }

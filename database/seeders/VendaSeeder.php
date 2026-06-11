@@ -14,7 +14,7 @@ class VendaSeeder extends Seeder
      */
     public function run(): void
     {
-         Venda::create([
+        Venda::create([
             'cliente_id'     => 1,
             'apartamento_id' => 1,
             'data_venda'     => '2025-03-15',
