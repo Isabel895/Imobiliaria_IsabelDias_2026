@@ -10,11 +10,10 @@ use Illuminate\Http\Request;
 class VendaController extends Controller
 {
 
-    public function index()
-    {
-        $vendas = Venda::with(['cliente', 'apartamento'])->get();
-        return view('vendas.index', compact('vendas'));
-    }
+    public function index() {
+    $vendas = Venda::with(['cliente', 'apartamento'])->paginate(10);
+    return view('vendas.index', compact('vendas'));
+}
 
     public function create()
     {

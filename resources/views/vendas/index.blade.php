@@ -41,4 +41,7 @@
             @endforelse
         </tbody>
     </table>
+    <div class="d-flex justify-content-center mt-3">
+        {{ $vendas->links() }}
+    </div>
 @endsection

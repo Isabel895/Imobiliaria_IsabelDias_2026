@@ -30,7 +30,7 @@ class ApartamentoController extends Controller
             $query->orderBy($order);
         }
 
-        $apartamentos = $query->get();
+        $apartamentos = $query->paginate(10)->withQueryString();
         return view('apartamentos.index', compact('apartamentos'));
     }
 
