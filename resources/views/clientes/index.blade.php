@@ -2,9 +2,7 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h1>Clientes</h1>
-        @auth
-            <a href="{{ route('clientes.create') }}" class="btn btn-primary">+ Novo Cliente</a>
-        @endauth
+        <a href="{{ auth()->check() ? route('clientes.create') : route('login') }}" class="btn btn-primary">+ Novo Cliente</a>
     </div>
     <table class="table table-striped table-bordered" style="table-layout: auto;">
         <thead class="table-dark">
@@ -27,13 +25,15 @@
                     <td>{{ $cliente->nif }}</td>
                     <td class="text-nowrap">
                         <a href="{{ route('clientes.show', $cliente) }}" class="btn btn-sm btn-info">Ver</a>
+                        <a href="{{ auth()->check() ? route('clientes.edit', $cliente) : route('login') }}" class="btn btn-sm btn-warning">Editar</a>
                         @auth
-                            <a href="{{ route('clientes.edit', $cliente) }}" class="btn btn-sm btn-warning">Editar</a>
                             <form action="{{ route('clientes.destroy', $cliente) }}" method="POST" class="d-inline"
                                 onsubmit="return confirm('Apagar cliente?')">
                                 @csrf @method('DELETE')
                                 <button class="btn btn-sm btn-danger">Apagar</button>
                             </form>
+                        @else
+                            <a href="{{ route('login') }}" class="btn btn-sm btn-danger">Apagar</a>
                         @endauth
                     </td>
                 </tr>

@@ -2,9 +2,8 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h1>Apartamentos</h1>
-        @auth
-            <a href="{{ route('apartamentos.create') }}" class="btn btn-primary">+ Novo Apartamento</a>
-        @endauth
+        <a href="{{ auth()->check() ? route('apartamentos.create') : route('login') }}" class="btn btn-primary">+ Novo
+            Apartamento</a>
     </div>
 
     <form method="GET" class="row g-2 mb-3">
@@ -64,19 +63,22 @@
                     </td>
                     <td class="text-nowrap">
                         <a href="{{ route('apartamentos.show', $apt) }}" class="btn btn-sm btn-info">Ver</a>
+                        <a href="{{ auth()->check() ? route('apartamentos.edit', $apt) : route('login') }}"
+                            class="btn btn-sm btn-warning">Editar</a>
                         @auth
-                            <a href="{{ route('apartamentos.edit', $apt) }}" class="btn btn-sm btn-warning">Editar</a>
                             <form action="{{ route('apartamentos.destroy', $apt) }}" method="POST" class="d-inline"
                                 onsubmit="return confirm('Apagar apartamento?')">
                                 @csrf @method('DELETE')
                                 <button class="btn btn-sm btn-danger">Apagar</button>
                             </form>
+                        @else
+                            <a href="{{ route('login') }}" class="btn btn-sm btn-danger">Apagar</a>
                         @endauth
                     </td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="8" class="text-center">Nenhum apartamento encontrado.</td>
+                    <td colspan="9" class="text-center">Nenhum apartamento encontrado.</td>
                 </tr>
             @endforelse
         </tbody>
