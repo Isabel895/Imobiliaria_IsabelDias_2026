@@ -4,7 +4,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ApartamentoController;
 use App\Http\Controllers\VendaController;
 
-Route::get('/', fn() => redirect()->route('clientes.index'));
+Route::get('/', fn() => view('welcome'))->name('home');
 
 // Rotas que requerem autenticação (create, store, edit, update, destroy)
 Route::middleware('auth')->group(function () {
@@ -14,7 +14,6 @@ Route::middleware('auth')->group(function () {
 });
 
 // Rotas públicas (index e show) — declaradas DEPOIS das rotas create/edit
-// para evitar que {cliente} capture "create" ou "edit"
 Route::get('/clientes',                    [ClienteController::class, 'index'])->name('clientes.index');
 Route::get('/clientes/{cliente}',          [ClienteController::class, 'show'])->name('clientes.show');
 Route::get('/apartamentos',                [ApartamentoController::class, 'index'])->name('apartamentos.index');

@@ -28,7 +28,7 @@
     </div>
    <div class="mt-3">
     @auth
-        <a href="{{ route('apartamentos.edit', $apt) }}" class="btn btn-warning">Editar</a>
+        <a href="{{ route('apartamentos.edit', $apartamento) }}" class="btn btn-warning">Editar</a>
     @endauth
     <a href="{{ route('apartamentos.index') }}" class="btn btn-secondary">Voltar</a>
 </div>
