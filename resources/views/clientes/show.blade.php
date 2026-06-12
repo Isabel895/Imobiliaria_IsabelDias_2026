@@ -11,10 +11,12 @@
             <p><strong>NIF:</strong> {{ $cliente->nif }}</p>
         </div>
     </div>
-    <div class="mt-3">
+   <div class="mt-3">
+    @auth
         <a href="{{ route('clientes.edit', $cliente) }}" class="btn btn-warning">Editar</a>
-        <a href="{{ route('clientes.index') }}" class="btn btn-secondary">Voltar</a>
-    </div>
+    @endauth
+    <a href="{{ route('clientes.index') }}" class="btn btn-secondary">Voltar</a>
+</div>
 
     <h3 class="mt-4">Vendas deste cliente</h3>
     <table class="table table-bordered">

@@ -2,7 +2,9 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h1>Apartamentos</h1>
-        <a href="{{ route('apartamentos.create') }}" class="btn btn-primary">+ Novo Apartamento</a>
+        @auth
+            <a href="{{ route('apartamentos.create') }}" class="btn btn-primary">+ Novo Apartamento</a>
+        @endauth
     </div>
 
     <form method="GET" class="row g-2 mb-3">
@@ -24,7 +26,7 @@
         </div>
     </form>
 
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped table-bordered" style="table-layout: auto;">
         <thead class="table-dark">
             <tr>
                 <th>ID</th>
@@ -35,7 +37,7 @@
                 <th>Preço</th>
                 <th>Foto</th>
                 <th>Estado</th>
-                <th>Ações</th>
+                <th class="text-center" style="width: 1%; white-space: nowrap;">Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -60,14 +62,16 @@
                             {{ $apt->estado }}
                         </span>
                     </td>
-                    <td>
+                    <td class="text-nowrap">
                         <a href="{{ route('apartamentos.show', $apt) }}" class="btn btn-sm btn-info">Ver</a>
-                        <a href="{{ route('apartamentos.edit', $apt) }}" class="btn btn-sm btn-warning">Editar</a>
-                        <form action="{{ route('apartamentos.destroy', $apt) }}" method="POST" class="d-inline"
-                            onsubmit="return confirm('Apagar apartamento?')">
-                            @csrf @method('DELETE')
-                            <button class="btn btn-sm btn-danger">Apagar</button>
-                        </form>
+                        @auth
+                            <a href="{{ route('apartamentos.edit', $apt) }}" class="btn btn-sm btn-warning">Editar</a>
+                            <form action="{{ route('apartamentos.destroy', $apt) }}" method="POST" class="d-inline"
+                                onsubmit="return confirm('Apagar apartamento?')">
+                                @csrf @method('DELETE')
+                                <button class="btn btn-sm btn-danger">Apagar</button>
+                            </form>
+                        @endauth
                     </td>
                 </tr>
             @empty

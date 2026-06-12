@@ -15,7 +15,9 @@
         </div>
     </div>
     <div class="mt-3">
-        <a href="{{ route('vendas.edit', $venda) }}" class="btn btn-warning">Editar</a>
+        @auth
+            <a href="{{ route('vendas.edit', $venda) }}" class="btn btn-warning">Editar</a>
+        @endauth
         <a href="{{ route('vendas.index') }}" class="btn btn-secondary">Voltar</a>
     </div>
 @endsection
