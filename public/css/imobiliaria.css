@@ -1,0 +1,160 @@
+.btn-acao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 18px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1.5px solid;
+    background: transparent;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.18s, color 0.18s;
+    white-space: nowrap;
+}
+
+.btn-acao-ver {
+    color: #0d6efd;
+    border-color: #0d6efd;
+    background-color: rgb(233, 232, 232);
+}
+.btn-acao-ver:hover {
+    background: #0d6efd;
+    color: #fff;
+}
+
+.btn-acao-editar {
+    color: #0d6efd;
+    border-color:  #0d6efd;
+    background-color: rgb(233, 232, 232);
+}
+.btn-acao-editar:hover {
+    background:  #0d6efd;
+    color: #fff;
+}
+
+.btn-acao-apagar {
+    color: #dc3545;
+    border-color: #dc3545;
+    background-color: rgb(233, 232, 232);
+}
+.btn-acao-apagar:hover {
+    background: #dc3545;
+    color: #fff;
+}
+/* === Botão "Novo" === */
+.button-novo {
+    position: relative;
+    width: 160px;
+    height: 38px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: 1px solid #0b5ed7;
+    background-color: #0d6efd;
+    border-radius: 6px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: background 0.3s, border 0.3s;
+}
+.button-novo .button__text {
+    transform: translateX(22px);
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    transition: color 0.3s;
+    user-select: none;
+}
+.button-novo .button__icon {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 36px;
+    background-color: #0b5ed7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.3s, transform 0.3s;
+}
+.button-novo .button__icon svg {
+    width: 22px;
+    stroke: #fff;
+    fill: none;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+}
+.button-novo:hover {
+    background: #0b5ed7;
+}
+.button-novo:hover .button__text {
+    color: transparent;
+}
+.button-novo:hover .button__icon {
+    width: 158px;
+    right: auto;
+    left: 0;
+}
+.button-novo:active .button__icon {
+    background-color: #0a58ca;
+}
+.button-novo:active {
+    border-color: #0a58ca;
+}
+
+/* === Botão Logout  === */
+.btn-logout {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: width 0.3s, border-radius 0.3s;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    background-color: rgb(255, 65, 65);
+    padding: 0;
+}
+.btn-logout .sign {
+    min-width: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: padding 0.3s;
+}
+.btn-logout .sign svg {
+    width: 17px;
+    fill: white;
+}
+.btn-logout .text {
+    position: absolute;
+    right: 0;
+    width: 0;
+    opacity: 0;
+    color: white;
+    font-size: 0.95em;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: opacity 0.3s, width 0.3s, padding 0.3s;
+}
+.btn-logout:hover {
+    width: 110px;
+    border-radius: 40px;
+}
+.btn-logout:hover .sign {
+    padding-left: 10px;
+}
+.btn-logout:hover .text {
+    opacity: 1;
+    width: 70%;
+    padding-right: 10px;
+}
+.btn-logout:active {
+    transform: translate(2px, 2px);
+}
+

@@ -2,8 +2,7 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h1>Apartamentos</h1>
-        <a href="{{ auth()->check() ? route('apartamentos.create') : route('login') }}" class="btn btn-primary">+ Novo
-            Apartamento</a>
+        <a href="{{ auth()->check() ? route('apartamentos.create') : route('login') }}" class="button-novo"><span class="button__text">Novo Apt.</span><span class="button__icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></a>
     </div>
 
     <form method="GET" class="row g-2 mb-3">
@@ -13,11 +12,10 @@
         </div>
         <div class="col-md-3">
             <select name="order" class="form-select">
-                <option value="id" {{ request('order') == 'id' ? 'selected' : '' }}>Ordenar por ID</option>
-                <option value="tipologia"{{ request('order') == 'tipologia' ? 'selected' : '' }}>Ordenar por Tipologia
-                </option>
-                <option value="area" {{ request('order') == 'area' ? 'selected' : '' }}>Ordenar por Área</option>
-                <option value="preco" {{ request('order') == 'preco' ? 'selected' : '' }}>Ordenar por Preço</option>
+                <option value="id"       {{ request('order') == 'id'       ? 'selected' : '' }}>Ordenar por ID</option>
+                <option value="tipologia"{{ request('order') == 'tipologia' ? 'selected' : '' }}>Ordenar por Tipologia</option>
+                <option value="area"     {{ request('order') == 'area'     ? 'selected' : '' }}>Ordenar por Área</option>
+                <option value="preco"    {{ request('order') == 'preco'    ? 'selected' : '' }}>Ordenar por Preço</option>
             </select>
         </div>
         <div class="col-md-2">
@@ -62,17 +60,16 @@
                         </span>
                     </td>
                     <td class="text-nowrap">
-                        <a href="{{ route('apartamentos.show', $apt) }}" class="btn btn-sm btn-info">Ver</a>
-                        <a href="{{ auth()->check() ? route('apartamentos.edit', $apt) : route('login') }}"
-                            class="btn btn-sm btn-warning">Editar</a>
+                        <a href="{{ route('apartamentos.show', $apt) }}" class="btn-acao btn-acao-ver">Ver</a>
+                        <a href="{{ auth()->check() ? route('apartamentos.edit', $apt) : route('login') }}" class="btn-acao btn-acao-editar">Editar</a>
                         @auth
                             <form action="{{ route('apartamentos.destroy', $apt) }}" method="POST" class="d-inline"
                                 onsubmit="return confirm('Apagar apartamento?')">
                                 @csrf @method('DELETE')
-                                <button class="btn btn-sm btn-danger">Apagar</button>
+                                <button class="btn-acao btn-acao-apagar">Apagar</button>
                             </form>
                         @else
-                            <a href="{{ route('login') }}" class="btn btn-sm btn-danger">Apagar</a>
+                            <a href="{{ route('login') }}" class="btn-acao btn-acao-apagar">Apagar</a>
                         @endauth
                     </td>
                 </tr>

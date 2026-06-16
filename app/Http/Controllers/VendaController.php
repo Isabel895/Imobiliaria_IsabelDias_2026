@@ -9,11 +9,23 @@ use Illuminate\Http\Request;
 
 class VendaController extends Controller
 {
+    public function index(Request $request)
+    {
+        $query = Venda::with(['cliente', 'apartamento']);
 
-    public function index() {
-    $vendas = Venda::with(['cliente', 'apartamento'])->paginate(10);
-    return view('vendas.index', compact('vendas'));
-}
+        if ($request->filled('search')) {
+            $s = $request->search;
+            $query->whereHas('cliente', fn($q) => $q->where('nome', 'like', "%$s%"))
+                  ->orWhereHas('apartamento', fn($q) => $q->where('referencia', 'like', "%$s%")
+                      ->orWhere('tipologia', 'like', "%$s%"));
+        }
+
+        $order = in_array($request->order, ['id', 'data_venda', 'valor_venda']) ? $request->order : 'id';
+        $query->orderBy($order);
+
+        $vendas = $query->paginate(10)->withQueryString();
+        return view('vendas.index', compact('vendas'));
+    }
 
     public function create()
     {
@@ -74,7 +86,6 @@ class VendaController extends Controller
 
     public function destroy(Venda $venda)
     {
-        // Repõe o apartamento como disponível
         $venda->apartamento->update(['estado' => 'Disponível']);
         $venda->delete();
         return redirect()->route('vendas.index')->with('success', 'Venda apagada com sucesso!');

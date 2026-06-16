@@ -7,10 +7,23 @@ use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
-
-    public function index()
+    public function index(Request $request)
     {
-        $clientes = Cliente::paginate(10);
+        $query = Cliente::query();
+
+        if ($request->filled('search')) {
+            $s = $request->search;
+            $query->where(function ($q) use ($s) {
+                $q->where('nome',  'like', "%$s%")
+                  ->orWhere('email', 'like', "%$s%")
+                  ->orWhere('nif',   'like', "%$s%");
+            });
+        }
+
+        $order = in_array($request->order, ['id', 'nome']) ? $request->order : 'id';
+        $query->orderBy($order);
+
+        $clientes = $query->paginate(10)->withQueryString();
         return view('clientes.index', compact('clientes'));
     }
 

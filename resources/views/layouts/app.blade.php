@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Imobiliária</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('css/imobiliaria.css') }}" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
@@ -35,10 +36,19 @@
                         <span class="nav-link text-light">{{ Auth::user()->name }}</span>
                     </li>
                     <li class="nav-item">
-                        <form action="{{ route('logout') }}" method="POST">
+                                                <form action="{{ route('logout') }}" method="POST">
                             @csrf
-                            <button class="btn btn-outline-light btn-sm mt-1">Logout</button>
+                            <button class="btn-logout" title="Logout">
+                                <span class="sign">
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M16 13v-2H7V8l-5 4 5 4v-3z"/>
+                                        <path d="M20 3h-9a2 2 0 0 0-2 2v4h2V5h9v14h-9v-4H9v4a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"/>
+                                    </svg>
+                                </span>
+                                <span class="text">Logout</span>
+                            </button>
                         </form>
+
                     </li>
                 @else
                     <li class="nav-item">
