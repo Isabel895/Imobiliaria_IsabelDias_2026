@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <h1>Vendas</h1>
+        <h1>💼 Vendas</h1>
        <a href="{{ auth()->check() ? route('vendas.create') : route('login') }}" class="button-novo"><span class="button__text">Nova Venda</span><span class="button__icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></a>
     </div>
 

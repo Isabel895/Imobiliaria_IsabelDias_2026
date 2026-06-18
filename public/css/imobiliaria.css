@@ -1,10 +1,48 @@
+/* === Box principal (header + pesquisa) === */
+.box-topo {
+    background: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 10px 10px 0 0;
+    padding: 1.25rem 1.5rem 1rem 1.5rem;
+    border-bottom: none;
+}
+.box-topo h1 {
+    margin: 0 0 0 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+/* === Tabela colada à box === */
+.tabela-box {
+    border: 1px solid #dee2e6;
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+}
+.tabela-box table {
+    margin-bottom: 0;
+    border: none;
+}
+.tabela-box table thead th:first-child { border-left: none; }
+.tabela-box table thead th:last-child  { border-right: none; }
+.tabela-box table tbody tr:last-child td { border-bottom: none; }
+
+/* === Box de formulário (editar/criar) === */
+.box-form {
+    background: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-top: 1.25rem;
+}
+
+/* === Botões de ação nas tabelas === */
 .btn-acao {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 6px 18px;
+    padding: 5px 16px;
     border-radius: 50px;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 500;
     border: 1.5px solid;
     background: transparent;
@@ -13,37 +51,14 @@
     transition: background 0.18s, color 0.18s;
     white-space: nowrap;
 }
+.btn-acao-ver    { color: #0d6efd; border-color: #0d6efd; }
+.btn-acao-ver:hover { background: #0d6efd; color: #fff; }
+.btn-acao-editar { color: #fd7e14; border-color: #fd7e14; }
+.btn-acao-editar:hover { background: #fd7e14; color: #fff; }
+.btn-acao-apagar { color: #dc3545; border-color: #dc3545; }
+.btn-acao-apagar:hover { background: #dc3545; color: #fff; }
 
-.btn-acao-ver {
-    color: #0d6efd;
-    border-color: #0d6efd;
-    background-color: rgb(233, 232, 232);
-}
-.btn-acao-ver:hover {
-    background: #0d6efd;
-    color: #fff;
-}
-
-.btn-acao-editar {
-    color: #0d6efd;
-    border-color:  #0d6efd;
-    background-color: rgb(233, 232, 232);
-}
-.btn-acao-editar:hover {
-    background:  #0d6efd;
-    color: #fff;
-}
-
-.btn-acao-apagar {
-    color: #dc3545;
-    border-color: #dc3545;
-    background-color: rgb(233, 232, 232);
-}
-.btn-acao-apagar:hover {
-    background: #dc3545;
-    color: #fff;
-}
-/* === Botão "Novo" === */
+/* === Botão "Novo" (azul) === */
 .button-novo {
     position: relative;
     width: 160px;
@@ -103,7 +118,7 @@
     border-color: #0a58ca;
 }
 
-/* === Botão Logout  === */
+/* === Botão Logout (circular expansível, vermelho) === */
 .btn-logout {
     display: flex;
     align-items: center;
@@ -157,6 +172,7 @@
 .btn-logout:active {
     transform: translate(2px, 2px);
 }
+
 /* === Cards de estatísticas (Dashboard) === */
 .stat-card {
     background: #fff;
@@ -166,6 +182,7 @@
     text-align: center;
     border-top: 4px solid transparent;
     transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
 }
 .stat-card:hover {
     transform: translateY(-4px);
@@ -218,5 +235,3 @@
     background: #0d6efd;
     color: #fff;
 }
-
-
