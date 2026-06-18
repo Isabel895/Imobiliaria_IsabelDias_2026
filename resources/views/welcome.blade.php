@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Imobiliária</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('css/imobiliaria.css') }}" rel="stylesheet">
 </head>
 <body class="bg-light">
 
@@ -29,7 +30,12 @@
 <div class="container text-center py-5 mt-4">
     <span style="font-size: 4rem;">🏠</span>
     <h1 class="display-4 fw-bold mt-3">Imobiliária</h1>
-    <p class="text-muted fs-5 mb-5">Gestão de clientes, apartamentos e vendas</p>
+    <p class="text-muted fs-5 mb-3">Gestão de clientes, apartamentos e vendas</p>
+
+    <a href="{{ route('dashboard') }}" class="btn-dashboard mb-5">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+        Dashboard
+    </a>
 
     <div class="row justify-content-center g-4">
         <div class="col-md-3">

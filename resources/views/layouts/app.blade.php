@@ -12,13 +12,18 @@
     <div class="container">
         <a class="navbar-brand" href="/">🏠 Imobiliária</a>
 
-        {{-- Botão hambúrguer --}}
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarMenu">
             <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-1" href="{{ route('dashboard') }}">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+                        Dashboard
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('clientes.index') }}">Clientes</a>
                 </li>
@@ -30,13 +35,13 @@
                 </li>
             </ul>
 
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
                 @auth
                     <li class="nav-item">
                         <span class="nav-link text-light">{{ Auth::user()->name }}</span>
                     </li>
                     <li class="nav-item">
-                                                <form action="{{ route('logout') }}" method="POST">
+                        <form action="{{ route('logout') }}" method="POST">
                             @csrf
                             <button class="btn-logout" title="Logout">
                                 <span class="sign">
@@ -48,7 +53,6 @@
                                 <span class="text">Logout</span>
                             </button>
                         </form>
-
                     </li>
                 @else
                     <li class="nav-item">

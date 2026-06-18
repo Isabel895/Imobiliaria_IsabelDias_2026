@@ -3,8 +3,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ApartamentoController;
 use App\Http\Controllers\VendaController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', fn() => view('welcome'))->name('home');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 // Rotas que requerem autenticação (create, store, edit, update, destroy)
 Route::middleware('auth')->group(function () {

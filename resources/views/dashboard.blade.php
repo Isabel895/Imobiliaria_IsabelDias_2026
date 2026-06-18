@@ -1,17 +1,42 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
+@section('content')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
+<div class="box-topo" style="border-radius:10px;border-bottom:1px solid #dee2e6;margin-bottom:1.5rem;">
+    <h1>Dashboard</h1>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-3">
+        <div class="stat-card stat-card-blue">
+            <div class="stat-icon">👤</div>
+            <div class="stat-value">{{ $totalClientes }}</div>
+            <div class="stat-label">Clientes Registados</div>
         </div>
     </div>
-</x-app-layout>
+
+    <div class="col-md-3">
+        <div class="stat-card stat-card-purple">
+            <div class="stat-icon">🏢</div>
+            <div class="stat-value">{{ $totalApartamentos }}</div>
+            <div class="stat-label">Apartamentos Registados</div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="stat-card stat-card-orange">
+            <div class="stat-icon">🏠</div>
+            <div class="stat-value">{{ $apartamentosVendidos }}</div>
+            <div class="stat-label">Apartamentos Vendidos</div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="stat-card stat-card-green">
+            <div class="stat-icon">💰</div>
+            <div class="stat-value">{{ number_format($totalVendas, 2, ',', '.') }} €</div>
+            <div class="stat-label">Total em Vendas</div>
+        </div>
+    </div>
+</div>
+
+@endsection
