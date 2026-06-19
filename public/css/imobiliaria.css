@@ -196,6 +196,10 @@ h1, h2, h3, h4, h5 {
     overflow: hidden;
     background: var(--card);
 }
+.tabela-box-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
 .tabela-box table {
     margin-bottom: 0;
     border: none;
@@ -210,6 +214,7 @@ h1, h2, h3, h4, h5 {
     font-weight: 600;
     border: none;
     padding: 0.9rem 1rem;
+    white-space: nowrap;
 }
 .tabela-box table tbody td {
     padding: 0.85rem 1rem;
@@ -224,6 +229,21 @@ h1, h2, h3, h4, h5 {
 .tabela-box table thead th:first-child { border-left: none; }
 .tabela-box table thead th:last-child  { border-right: none; }
 .tabela-box table tbody tr:last-child td { border-bottom: none; }
+
+/* Barra de scroll horizontal mais visível e discreta */
+.tabela-box-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+.tabela-box-scroll::-webkit-scrollbar-track {
+    background: #F1EFE8;
+}
+.tabela-box-scroll::-webkit-scrollbar-thumb {
+    background: var(--gold-soft);
+    border-radius: 4px;
+}
+.tabela-box-scroll::-webkit-scrollbar-thumb:hover {
+    background: var(--gold);
+}
 
 /* ============ BOX FORM (criar/editar) ============ */
 .box-form {
@@ -409,6 +429,43 @@ h1, h2, h3, h4, h5 {
 .stat-card-purple { border-top-color: var(--gold); }
 .stat-card-orange { border-top-color: var(--red); }
 .stat-card-green  { border-top-color: var(--green); }
+
+/* ============ ESTATÍSTICAS MENSAIS (Dashboard) ============ */
+.box-graficos {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 1.5rem 1.5rem 0.5rem;
+}
+.box-graficos h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+}
+.grafico-card {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 1.1rem 1.1rem 0.6rem;
+    height: 100%;
+}
+.grafico-card .grafico-titulo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+}
+.grafico-card .grafico-titulo .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.grafico-card canvas {
+    max-height: 220px;
+}
 
 /* ============ BOTÃO DASHBOARD (legacy, mantido por compatibilidade) ============ */
 .btn-dashboard {

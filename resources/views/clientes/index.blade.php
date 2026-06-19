@@ -30,44 +30,46 @@
 </div>
 
 <div class="tabela-box">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Email</th>
-                <th>Telefone</th>
-                <th>NIF</th>
-                <th class="text-center" style="width:1%;white-space:nowrap;">Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            @forelse($clientes as $cliente)
+    <div class="tabela-box-scroll">
+        <table class="table">
+            <thead>
                 <tr>
-                    <td class="text-muted">#{{ $cliente->id }}</td>
-                    <td class="fw-semibold">{{ $cliente->nome }}</td>
-                    <td>{{ $cliente->email }}</td>
-                    <td>{{ $cliente->telefone }}</td>
-                    <td>{{ $cliente->nif }}</td>
-                    <td class="text-nowrap">
-                        <a href="{{ route('clientes.show', $cliente) }}" class="btn-acao btn-acao-ver">Ver</a>
-                        <a href="{{ auth()->check() ? route('clientes.edit', $cliente) : route('login') }}" class="btn-acao btn-acao-editar">Editar</a>
-                        @auth
-                            <form action="{{ route('clientes.destroy', $cliente) }}" method="POST" class="d-inline"
-                                onsubmit="return confirm('Apagar cliente?')">
-                                @csrf @method('DELETE')
-                                <button class="btn-acao btn-acao-apagar">Apagar</button>
-                            </form>
-                        @else
-                            <a href="{{ route('login') }}" class="btn-acao btn-acao-apagar">Apagar</a>
-                        @endauth
-                    </td>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>NIF</th>
+                    <th class="text-center" style="width:1%;white-space:nowrap;">Ações</th>
                 </tr>
-            @empty
-                <tr><td colspan="6" class="text-center text-muted py-4">Nenhum cliente encontrado.</td></tr>
-            @endforelse
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @forelse($clientes as $cliente)
+                    <tr>
+                        <td class="text-muted">#{{ $cliente->id }}</td>
+                        <td class="fw-semibold">{{ $cliente->nome }}</td>
+                        <td>{{ $cliente->email }}</td>
+                        <td>{{ $cliente->telefone }}</td>
+                        <td>{{ $cliente->nif }}</td>
+                        <td class="text-nowrap">
+                            <a href="{{ route('clientes.show', $cliente) }}" class="btn-acao btn-acao-ver">Ver</a>
+                            <a href="{{ auth()->check() ? route('clientes.edit', $cliente) : route('login') }}" class="btn-acao btn-acao-editar">Editar</a>
+                            @auth
+                                <form action="{{ route('clientes.destroy', $cliente) }}" method="POST" class="d-inline"
+                                    onsubmit="return confirm('Apagar cliente?')">
+                                    @csrf @method('DELETE')
+                                    <button class="btn-acao btn-acao-apagar">Apagar</button>
+                                </form>
+                            @else
+                                <a href="{{ route('login') }}" class="btn-acao btn-acao-apagar">Apagar</a>
+                            @endauth
+                        </td>
+                    </tr>
+                @empty
+                    <tr><td colspan="6" class="text-center text-muted py-4">Nenhum cliente encontrado.</td></tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <div class="d-flex justify-content-center mt-3">
