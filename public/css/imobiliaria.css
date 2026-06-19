@@ -1,49 +1,294 @@
-/* === Box principal (header + pesquisa) === */
+/* ============================================================
+   ISABEL DIAS IMOBILIÁRIA — sistema visual
+   Cor:  #FAFAF7 fundo · #1C2B33 texto/marca · #A66E2C dourado
+         #3A6B52 sucesso/disponível · #A6402F alerta/vendido
+   Tipo: Fraunces (display) + Inter (corpo/dados)
+   ============================================================ */
+
+:root {
+    --bg:        #FAFAF7;
+    --ink:       #1C2B33;
+    --ink-soft:  #5B6B72;
+    --gold:      #A66E2C;
+    --gold-soft: #C9A06B;
+    --green:     #3A6B52;
+    --red:       #A6402F;
+    --line:      #E4E1D8;
+    --card:      #FFFFFF;
+}
+
+body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Fraunces', serif;
+    color: var(--ink);
+}
+
+/* ============ NAVBAR ============ */
+.id-navbar {
+    background: var(--ink);
+    padding: 0.9rem 0;
+}
+.id-navbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.id-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+.id-brand-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--ink);
+    background: var(--gold-soft);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.id-brand-name {
+    font-family: 'Fraunces', serif;
+    color: #fff;
+    font-size: 1.15rem;
+    font-weight: 500;
+    line-height: 1.1;
+}
+.id-brand-name em {
+    display: block;
+    font-style: normal;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    font-family: 'Inter', sans-serif;
+    margin-top: 1px;
+}
+.id-toggler {
+    filter: invert(1);
+    border: none;
+}
+.id-nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 4px;
+}
+.id-nav-links a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255,255,255,0.72);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: color 0.15s, background 0.15s;
+    white-space: nowrap;
+}
+.id-nav-links a:hover {
+    color: #fff;
+    background: rgba(255,255,255,0.06);
+}
+.id-nav-links a.active {
+    color: var(--gold-soft);
+}
+.id-nav-right {
+    margin-left: auto;
+}
+.id-user-pill {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.85rem;
+    padding: 8px 10px;
+}
+.id-cta {
+    background: var(--gold);
+    color: #fff !important;
+}
+.id-cta:hover {
+    background: var(--gold-soft);
+}
+
+@media (max-width: 991px) {
+    .id-nav-links { flex-direction: column; align-items: flex-start; width: 100%; }
+    .id-nav-right { margin-left: 0; margin-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.5rem; width: 100%; }
+    .navbar-collapse { margin-top: 1rem; }
+}
+
+/* ============ PAGE / ALERT ============ */
+.id-page { padding-top: 0.5rem; padding-bottom: 3rem; }
+
+.id-alert {
+    background: #EFF5F0;
+    border-left: 3px solid var(--green);
+    color: #1f4533;
+    padding: 0.85rem 1.1rem;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    font-size: 0.92rem;
+}
+
+/* ============ BOX TOPO (cabeçalho + pesquisa) ============ */
 .box-topo {
-    background: #fff;
-    border: 1px solid #dee2e6;
-    border-radius: 10px 10px 0 0;
-    padding: 1.25rem 1.5rem 1rem 1.5rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px 12px 0 0;
+    padding: 1.5rem 1.75rem 1.25rem;
     border-bottom: none;
 }
 .box-topo h1 {
-    margin: 0 0 0 0;
-    font-size: 1.6rem;
-    font-weight: 700;
+    margin: 0 0 1rem 0;
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+.box-topo .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.7rem;
+    color: var(--gold);
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 0.2rem;
+    display: block;
 }
 
-/* === Tabela colada à box === */
+.id-search-form .form-control,
+.id-search-form .form-select {
+    border-color: var(--line);
+    font-size: 0.92rem;
+    border-radius: 7px;
+}
+.id-search-form .form-control:focus,
+.id-search-form .form-select:focus {
+    border-color: var(--gold-soft);
+    box-shadow: 0 0 0 3px rgba(166,110,44,0.12);
+}
+.id-search-form .btn-secondary {
+    background: var(--ink);
+    border-color: var(--ink);
+    border-radius: 7px;
+    font-size: 0.92rem;
+}
+.id-search-form .btn-secondary:hover {
+    background: #2c3e47;
+    border-color: #2c3e47;
+}
+
+/* ============ TABELA ============ */
 .tabela-box {
-    border: 1px solid #dee2e6;
-    border-radius: 0 0 10px 10px;
+    border: 1px solid var(--line);
+    border-radius: 0 0 12px 12px;
     overflow: hidden;
+    background: var(--card);
 }
 .tabela-box table {
     margin-bottom: 0;
     border: none;
 }
+.tabela-box table thead th {
+    background: var(--ink);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    font-weight: 600;
+    border: none;
+    padding: 0.9rem 1rem;
+}
+.tabela-box table tbody td {
+    padding: 0.85rem 1rem;
+    font-size: 0.9rem;
+    color: var(--ink);
+    border-color: var(--line);
+    vertical-align: middle;
+}
+.tabela-box table tbody tr:hover {
+    background: #FBF8F1;
+}
 .tabela-box table thead th:first-child { border-left: none; }
 .tabela-box table thead th:last-child  { border-right: none; }
 .tabela-box table tbody tr:last-child td { border-bottom: none; }
 
-/* === Box de formulário (editar/criar) === */
+/* ============ BOX FORM (criar/editar) ============ */
 .box-form {
-    background: #fff;
-    border: 1px solid #dee2e6;
-    border-radius: 10px;
-    padding: 1.5rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 1.75rem 1.75rem 1.5rem;
     margin-top: 1.25rem;
 }
+.box-form h5 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 0.9rem;
+    margin-bottom: 1.4rem !important;
+}
+.box-form label.form-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+.box-form .form-control,
+.box-form .form-select {
+    border-color: var(--line);
+    border-radius: 7px;
+    padding: 0.55rem 0.8rem;
+}
+.box-form .form-control:focus,
+.box-form .form-select:focus {
+    border-color: var(--gold-soft);
+    box-shadow: 0 0 0 3px rgba(166,110,44,0.12);
+}
+.box-form .btn-primary {
+    background: var(--ink);
+    border-color: var(--ink);
+    border-radius: 7px;
+    padding: 0.5rem 1.4rem;
+    font-weight: 500;
+}
+.box-form .btn-primary:hover {
+    background: #2c3e47;
+}
+.box-form .btn-secondary {
+    background: transparent;
+    border-color: var(--line);
+    color: var(--ink-soft);
+    border-radius: 7px;
+    padding: 0.5rem 1.4rem;
+}
+.box-form .btn-secondary:hover {
+    border-color: var(--ink-soft);
+    color: var(--ink);
+}
 
-/* === Botões de ação nas tabelas === */
+/* ============ BOTÕES DE AÇÃO (tabelas) ============ */
 .btn-acao {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 5px 16px;
+    padding: 5px 15px;
     border-radius: 50px;
-    font-size: 0.82rem;
-    font-weight: 500;
+    font-size: 0.78rem;
+    font-weight: 600;
     border: 1.5px solid;
     background: transparent;
     cursor: pointer;
@@ -51,24 +296,24 @@
     transition: background 0.18s, color 0.18s;
     white-space: nowrap;
 }
-.btn-acao-ver    { color: #0d6efd; border-color: #0d6efd; }
-.btn-acao-ver:hover { background: #0d6efd; color: #fff; }
-.btn-acao-editar { color: #fd7e14; border-color: #fd7e14; }
-.btn-acao-editar:hover { background: #fd7e14; color: #fff; }
-.btn-acao-apagar { color: #dc3545; border-color: #dc3545; }
-.btn-acao-apagar:hover { background: #dc3545; color: #fff; }
+.btn-acao-ver    { color: var(--ink);   border-color: var(--ink); }
+.btn-acao-ver:hover { background: var(--ink); color: #fff; }
+.btn-acao-editar { color: var(--gold);  border-color: var(--gold); }
+.btn-acao-editar:hover { background: var(--gold); color: #fff; }
+.btn-acao-apagar { color: var(--red);   border-color: var(--red); }
+.btn-acao-apagar:hover { background: var(--red); color: #fff; }
 
-/* === Botão "Novo" (azul) === */
+/* ============ BOTÃO "NOVO" ============ */
 .button-novo {
     position: relative;
-    width: 160px;
-    height: 38px;
+    width: 168px;
+    height: 40px;
     cursor: pointer;
     display: flex;
     align-items: center;
-    border: 1px solid #0b5ed7;
-    background-color: #0d6efd;
-    border-radius: 6px;
+    border: 1px solid var(--ink);
+    background-color: var(--ink);
+    border-radius: 7px;
     overflow: hidden;
     text-decoration: none;
     transition: background 0.3s, border 0.3s;
@@ -76,8 +321,8 @@
 .button-novo .button__text {
     transform: translateX(22px);
     color: #fff;
-    font-weight: 600;
-    font-size: 0.9rem;
+    font-weight: 500;
+    font-size: 0.88rem;
     white-space: nowrap;
     transition: color 0.3s;
     user-select: none;
@@ -86,39 +331,24 @@
     position: absolute;
     right: 0;
     height: 100%;
-    width: 36px;
-    background-color: #0b5ed7;
+    width: 38px;
+    background-color: var(--gold);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: width 0.3s, transform 0.3s;
+    transition: width 0.3s;
 }
 .button-novo .button__icon svg {
-    width: 22px;
+    width: 20px;
     stroke: #fff;
     fill: none;
     stroke-width: 2.5;
     stroke-linecap: round;
 }
-.button-novo:hover {
-    background: #0b5ed7;
-}
-.button-novo:hover .button__text {
-    color: transparent;
-}
-.button-novo:hover .button__icon {
-    width: 158px;
-    right: auto;
-    left: 0;
-}
-.button-novo:active .button__icon {
-    background-color: #0a58ca;
-}
-.button-novo:active {
-    border-color: #0a58ca;
-}
+.button-novo:hover .button__text { color: transparent; }
+.button-novo:hover .button__icon { width: 166px; left: 0; right: auto; }
 
-/* === Botão Logout (circular expansível, vermelho) === */
+/* ============ BOTÃO LOGOUT ============ */
 .btn-logout {
     display: flex;
     align-items: center;
@@ -131,8 +361,7 @@
     position: relative;
     overflow: hidden;
     transition: width 0.3s, border-radius 0.3s;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-    background-color: rgb(255, 65, 65);
+    background-color: var(--red);
     padding: 0;
 }
 .btn-logout .sign {
@@ -142,72 +371,46 @@
     justify-content: center;
     transition: padding 0.3s;
 }
-.btn-logout .sign svg {
-    width: 17px;
-    fill: white;
-}
+.btn-logout .sign svg { width: 16px; fill: white; }
 .btn-logout .text {
     position: absolute;
     right: 0;
     width: 0;
     opacity: 0;
     color: white;
-    font-size: 0.95em;
+    font-size: 0.88em;
     font-weight: 600;
     white-space: nowrap;
     transition: opacity 0.3s, width 0.3s, padding 0.3s;
 }
-.btn-logout:hover {
-    width: 110px;
-    border-radius: 40px;
-}
-.btn-logout:hover .sign {
-    padding-left: 10px;
-}
-.btn-logout:hover .text {
-    opacity: 1;
-    width: 70%;
-    padding-right: 10px;
-}
-.btn-logout:active {
-    transform: translate(2px, 2px);
-}
+.btn-logout:hover { width: 108px; border-radius: 40px; }
+.btn-logout:hover .sign { padding-left: 10px; }
+.btn-logout:hover .text { opacity: 1; width: 70%; padding-right: 10px; }
 
-/* === Cards de estatísticas (Dashboard) === */
+/* ============ STAT CARDS (Dashboard) ============ */
 .stat-card {
-    background: #fff;
-    border: 1px solid #dee2e6;
-    border-radius: 10px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
     padding: 1.75rem 1.25rem;
     text-align: center;
-    border-top: 4px solid transparent;
+    border-top: 3px solid transparent;
     transition: transform 0.2s, box-shadow 0.2s;
     cursor: pointer;
 }
 .stat-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 .5rem 1.25rem rgba(0,0,0,.1);
+    box-shadow: 0 .5rem 1.25rem rgba(28,43,51,.08);
 }
-.stat-icon {
-    font-size: 2.2rem;
-    margin-bottom: 0.5rem;
-}
-.stat-value {
-    font-size: 1.9rem;
-    font-weight: 700;
-    color: #212529;
-}
-.stat-label {
-    color: #6c757d;
-    font-size: 0.9rem;
-    margin-top: 0.25rem;
-}
-.stat-card-blue   { border-top-color: #0d6efd; }
-.stat-card-purple { border-top-color: #6f42c1; }
-.stat-card-orange { border-top-color: #fd7e14; }
-.stat-card-green  { border-top-color: #198754; }
+.stat-icon { font-size: 2.1rem; margin-bottom: 0.5rem; }
+.stat-value { font-family: 'Fraunces', serif; font-size: 1.9rem; font-weight: 600; color: var(--ink); }
+.stat-label { color: var(--ink-soft); font-size: 0.85rem; margin-top: 0.25rem; }
+.stat-card-blue   { border-top-color: var(--ink); }
+.stat-card-purple { border-top-color: var(--gold); }
+.stat-card-orange { border-top-color: var(--red); }
+.stat-card-green  { border-top-color: var(--green); }
 
-/* === Botão Dashboard (com ícone) === */
+/* ============ BOTÃO DASHBOARD (legacy, mantido por compatibilidade) ============ */
 .btn-dashboard {
     display: inline-flex;
     align-items: center;
@@ -216,22 +419,127 @@
     border-radius: 50px;
     font-size: 0.9rem;
     font-weight: 600;
-    color: #0d6efd;
-    border: 1.5px solid #0d6efd;
+    color: var(--gold);
+    border: 1.5px solid var(--gold);
     background: transparent;
     text-decoration: none;
     transition: background 0.18s, color 0.18s;
 }
-.btn-dashboard svg {
-    width: 16px;
-    height: 16px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+.btn-dashboard:hover { background: var(--gold); color: #fff; }
+
+/* ============================================================
+   CARDS DE APARTAMENTOS
+   ============================================================ */
+.apt-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 1.5rem;
 }
-.btn-dashboard:hover {
-    background: #0d6efd;
+
+.apt-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: visible;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+}
+.apt-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 .75rem 1.75rem rgba(28,43,51,.1);
+}
+
+.apt-card-photo {
+    position: relative;
+    height: 190px;
+    background: #EEEBE2;
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+}
+.apt-card-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.apt-card-photo .no-photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--ink-soft);
+    font-size: 0.8rem;
+    font-family: 'Fraunces', serif;
+}
+
+.apt-card-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
     color: #fff;
 }
+.apt-card-badge.disponivel { background: var(--green); }
+.apt-card-badge.vendido    { background: var(--red); }
+
+.apt-card-price-tag {
+    position: absolute;
+    top: 190px;
+    right: 14px;
+    background: var(--ink);
+    color: #fff;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 6px 14px 8px;
+    border-radius: 6px 6px 0 0;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    z-index: 2;
+}
+
+.apt-card-body {
+    padding: 1.6rem 1.25rem 1.25rem;
+}
+.apt-card-ref {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.68rem;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 0.15rem;
+}
+.apt-card-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+    color: var(--ink);
+}
+.apt-card-address {
+    font-size: 0.84rem;
+    color: var(--ink-soft);
+    margin-bottom: 0.9rem;
+    line-height: 1.35;
+}
+.apt-card-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line);
+    padding-top: 0.85rem;
+    margin-bottom: 1rem;
+}
+.apt-card-meta span { display: flex; align-items: center; gap: 5px; }
+.apt-card-meta svg { width: 14px; height: 14px; stroke: var(--gold); }
+
+.apt-card-actions {
+    display: flex;
+    gap: 6px;
+}
+.apt-card-actions .btn-acao { flex: 1; padding: 6px 10px; }

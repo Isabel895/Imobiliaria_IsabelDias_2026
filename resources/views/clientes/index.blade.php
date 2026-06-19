@@ -1,12 +1,19 @@
 @extends('layouts.app')
 @section('content')
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h1>👤 Clientes</h1>
-        <a href="{{ auth()->check() ? route('clientes.create') : route('login') }}" class="button-novo"><span class="button__text">Novo Cliente</span><span class="button__icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></a>
-    </div>
 
-    <form method="GET" class="row g-2 mb-3">
-        <div class="col-md-4">
+<div class="box-topo">
+    <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
+        <div>
+            <span class="eyebrow">Carteira de clientes</span>
+            <h1>Clientes</h1>
+        </div>
+        <a href="{{ auth()->check() ? route('clientes.create') : route('login') }}" class="button-novo">
+            <span class="button__text">Novo Cliente</span>
+            <span class="button__icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </a>
+    </div>
+    <form method="GET" class="row g-2 mt-3 id-search-form">
+        <div class="col-md-7">
             <input type="text" name="search" class="form-control"
                 placeholder="Pesquisar por nome, email ou NIF..." value="{{ request('search') }}">
         </div>
@@ -20,23 +27,25 @@
             <button type="submit" class="btn btn-secondary w-100">Filtrar</button>
         </div>
     </form>
+</div>
 
-    <table class="table table-striped table-bordered" style="table-layout: auto;">
-        <thead class="table-dark">
+<div class="tabela-box">
+    <table class="table">
+        <thead>
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Email</th>
                 <th>Telefone</th>
                 <th>NIF</th>
-                <th class="text-center" style="width: 1%; white-space: nowrap;">Ações</th>
+                <th class="text-center" style="width:1%;white-space:nowrap;">Ações</th>
             </tr>
         </thead>
         <tbody>
             @forelse($clientes as $cliente)
                 <tr>
-                    <td>{{ $cliente->id }}</td>
-                    <td>{{ $cliente->nome }}</td>
+                    <td class="text-muted">#{{ $cliente->id }}</td>
+                    <td class="fw-semibold">{{ $cliente->nome }}</td>
                     <td>{{ $cliente->email }}</td>
                     <td>{{ $cliente->telefone }}</td>
                     <td>{{ $cliente->nif }}</td>
@@ -55,13 +64,14 @@
                     </td>
                 </tr>
             @empty
-                <tr>
-                    <td colspan="6" class="text-center">Nenhum cliente encontrado.</td>
-                </tr>
+                <tr><td colspan="6" class="text-center text-muted py-4">Nenhum cliente encontrado.</td></tr>
             @endforelse
         </tbody>
     </table>
-    <div class="d-flex justify-content-center mt-3">
-        {{ $clientes->links() }}
-    </div>
+</div>
+
+<div class="d-flex justify-content-center mt-3">
+    {{ $clientes->links() }}
+</div>
+
 @endsection
